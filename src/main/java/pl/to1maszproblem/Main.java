@@ -10,7 +10,7 @@ import pl.to1maszproblem.command.ZbiorkaCommand;
 import pl.to1maszproblem.configuration.Configuration;
 import pl.to1maszproblem.configuration.MessageConfiguration;
 import pl.to1maszproblem.listener.InventoryClickListener;
-import pl.to1maszproblem.module.sterializer.CollectionSterializer;
+import pl.to1maszproblem.module.serializer.CollectionSerializer;
 import pl.to1maszproblem.notice.NoticeSerializer;
 
 public final class Main extends JavaPlugin {
@@ -27,7 +27,7 @@ public final class Main extends JavaPlugin {
         configuration = ConfigManager.create(Configuration.class, it -> {
             it.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit());
             it.withBindFile(this.getDataFolder() + "/config.yml");
-            it.withSerdesPack(registry -> registry.register(new CollectionSterializer()));
+            it.withSerdesPack(registry -> registry.register(new CollectionSerializer()));
             it.withRemoveOrphans(true);
             it.saveDefaults();
             it.load(true);

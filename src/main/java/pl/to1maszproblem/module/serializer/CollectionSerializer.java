@@ -1,15 +1,14 @@
-package pl.to1maszproblem.module.sterializer;
+package pl.to1maszproblem.module.serializer;
 
 import eu.okaeri.configs.schema.GenericsDeclaration;
 import eu.okaeri.configs.serdes.DeserializationData;
 import eu.okaeri.configs.serdes.ObjectSerializer;
 import eu.okaeri.configs.serdes.SerializationData;
 import lombok.NonNull;
-import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import pl.to1maszproblem.module.Collection;
 
-public class CollectionSterializer implements ObjectSerializer<Collection> {
+public class CollectionSerializer implements ObjectSerializer<Collection> {
     @Override
     public boolean supports(@NonNull Class<? super Collection> type) {
         return Collection.class.isAssignableFrom(type);
