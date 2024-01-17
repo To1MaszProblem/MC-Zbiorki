@@ -1,0 +1,8 @@
+name: MC-Zbiorki
+version: '1.0'
+main: pl.to1maszproblem.Main
+api-version: 1.16
+authors: [ To1MaszProblem ]
+commands:
+  zbiorki:
+    aliases: [zbiorka,collecton]
