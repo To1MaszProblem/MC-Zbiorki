@@ -1,4 +1,4 @@
-name: MC-Zbiorki
+name: MC-Collection
 version: '1.0'
 main: pl.to1maszproblem.Main
 api-version: 1.16

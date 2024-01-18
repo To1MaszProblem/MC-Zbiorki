@@ -132,9 +132,9 @@ public class ZbiorkaCommand implements TabExecutor {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        if (args.length == 1) return List.of("list", "reload", "delete", "setshard", "create");
-        if (args.length == 2 && args[0].equalsIgnoreCase("setshard")) return Main.getInstance().getConfiguration().getZbiorki().stream().map(collection -> collection.getName().toLowerCase()).toList();
-        if (args.length == 2 && args[0].equalsIgnoreCase("delete")) return Main.getInstance().getConfiguration().getZbiorki().stream().map(collection -> collection.getName().toLowerCase()).toList();
+        if (args.length == 1 && sender.hasPermission("collection.admin")) return List.of("list", "reload", "delete", "setshard", "create");
+        if (args.length == 2 && args[0].equalsIgnoreCase("setshard") && sender.hasPermission("collection.admin")) return Main.getInstance().getConfiguration().getZbiorki().stream().map(collection -> collection.getName().toLowerCase()).toList();
+        if (args.length == 2 && args[0].equalsIgnoreCase("delete") && sender.hasPermission("collection.admin")) return Main.getInstance().getConfiguration().getZbiorki().stream().map(collection -> collection.getName().toLowerCase()).toList();
         return null;
     }
     private int findSlot(Inventory inventory) {

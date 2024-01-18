@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.to1maszproblem</groupId>
-    <artifactId>MC-Zbiorki</artifactId>
+    <artifactId>MC-Collection</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>MC-Zbiorki</name>
+    <name>MC-Collection</name>
 
     <properties>
         <java.version>1.8</java.version>
