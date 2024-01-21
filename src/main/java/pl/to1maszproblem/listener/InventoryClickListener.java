@@ -78,6 +78,7 @@ public class InventoryClickListener implements Listener {
                     ItemStack itemToCheck = collection.getItemCollecting();
 
                     if (hasMultipleItems(player, itemToCheck, amount)) {
+                        player.getInventory().removeItem(itemToCheck);
                         collection.setCollected(collection.getCollected() + amount);
                         if (collection.getCollected() >= collection.getMaxCollection()) {
                             completeCollection(collection, player);
@@ -99,24 +100,16 @@ public class InventoryClickListener implements Listener {
     private boolean hasItem(Player player, ItemStack itemStack) {
         return player.getInventory().containsAtLeast(itemStack, itemStack.getAmount());
     }
+
     private boolean hasMultipleItems(Player player, ItemStack itemToCheck, int amount) {
-        int remainingAmount = amount;
+        int totalAmount = 0;
 
-        for (ItemStack item : player.getInventory().getContents()) {
-            if (item == null || !item.isSimilar(itemToCheck)) continue;
-            int itemAmount = item.getAmount();
-
-            if (remainingAmount >= itemAmount) {
-                player.getInventory().removeItem(item);
-                remainingAmount -= itemAmount;
-            } else {
-                item.setAmount(itemAmount - remainingAmount);
-                remainingAmount = 0;
-            }
-            if (remainingAmount <= 0) return true;
+        for (ItemStack itemStack : player.getInventory().getContents()) {
+            if (itemStack != null && itemStack.isSimilar(itemToCheck)) totalAmount += itemStack.getAmount();
         }
-        return false;
+        return totalAmount >= amount;
     }
+    //Main.getInstance().getMessageConfiguration().getDoesntHaveCollectionItem().send(player);
 
     private void completeCollection(Collection collection, Player player) {
         Bukkit.getOnlinePlayers().forEach(online -> {
