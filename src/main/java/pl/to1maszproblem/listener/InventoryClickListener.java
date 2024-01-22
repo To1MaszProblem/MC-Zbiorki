@@ -109,7 +109,6 @@ public class InventoryClickListener implements Listener {
         }
         return totalAmount >= amount;
     }
-    //Main.getInstance().getMessageConfiguration().getDoesntHaveCollectionItem().send(player);
 
     private void completeCollection(Collection collection, Player player) {
         Bukkit.getOnlinePlayers().forEach(online -> {
